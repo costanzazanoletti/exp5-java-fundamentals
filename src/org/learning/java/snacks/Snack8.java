@@ -21,8 +21,14 @@ public class Snack8 {
         validNumber = true;
       }
     } while (!validNumber);
-
     System.out.println("You number: " + number);
+
+    // SUGGERIMENTO PER LA SOLUZIONE
+    System.out.println(number / 1000 % 10);
+    System.out.println(number / 100 % 10);
+    System.out.println(number / 10 % 10);
+    System.out.println(number % 10);
+
     scan.close();
   }
 }
