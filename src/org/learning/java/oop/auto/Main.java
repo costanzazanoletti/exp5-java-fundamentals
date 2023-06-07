@@ -35,5 +35,8 @@ public class Main {
 
     Auto autoUtente = new Auto(colore, marca, annoImmatricolazione, ibrida);
 
+/*    Student s = new Student();
+    OnlineStudent os = new OnlineStudent();*/
+
   }
 }
