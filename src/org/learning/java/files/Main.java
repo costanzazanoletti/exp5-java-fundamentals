@@ -1,9 +1,15 @@
 package org.learning.java.files;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+
+  private final static String FILE_PATH = "./resources/people.txt";
 
   /*Creare un programma che prenda in input il numero di persone che si vuole inserire all'interno di un array.
   Fare poi un ciclo while che inserisca le persone (rappresentate da una classe Persona) all'interno della lista.
@@ -51,5 +57,53 @@ public class Main {
     System.out.println(Arrays.toString(people));
     scan.close();
 
+    /* Scrivo i dati su file*/
+    /*File file = new File(FILE_PATH);
+    if (!file.exists()) {
+      try {
+        file.createNewFile();
+      } catch (IOException e) {
+        System.out.println("Unable to find file");
+      }
+    }*/
+    // apro un FileWriter
+    FileWriter writer = null;
+    try {
+      writer = new FileWriter(FILE_PATH);
+      // BufferedWriter buffer = new BufferedWriter(writer);
+      // itero sull'array di persone
+      for (Person p : people) {
+        writer.write(p.toString() + "\n");
+      }
+
+    } catch (IOException e) {
+      System.out.println("Unable to write file");
+    } finally {
+      try {
+        writer.close();
+      } catch (NullPointerException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
+    /* leggo il file riga per riga */
+    // try-with-resources solo quando apro risorse che poi vanno chiuse
+    // Scanner reader = null;
+    try (Scanner reader = new Scanner(new File(FILE_PATH))) {
+      // reader = new Scanner(new File(FILE_PATH));
+      // itero sulle righe del file
+      while (reader.hasNextLine()) {
+        String line = reader.nextLine();
+        System.out.println(line);
+      }
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found");
+    } /*finally {
+      if (reader != null) {
+        reader.close();
+      }
+    }*/
   }
 }
