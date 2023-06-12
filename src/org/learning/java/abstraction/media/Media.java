@@ -13,4 +13,9 @@ public abstract class Media {
   }
 
   public abstract void execute();
+
+  @Override
+  public String toString() {
+    return getTitle();
+  }
 }

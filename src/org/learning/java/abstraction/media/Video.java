@@ -52,7 +52,7 @@ public class Video extends Media implements Playable, HasVolume, HasBrightness {
 
   @Override
   public void weaker() {
-    if (volumeLevel < (MIN_VOLUME + 10)) {
+    if (volumeLevel > (MIN_VOLUME + 10)) {
       volumeLevel -= 10;
     } else {
       System.out.println("Min volume reached");
@@ -71,7 +71,7 @@ public class Video extends Media implements Playable, HasVolume, HasBrightness {
 
   @Override
   public void play() {
-    for (int i = 0; i < volumeLevel; i++) {
+    for (int i = MIN_VOLUME; i < volumeLevel; i += 10) {
       String print = getTitle();
       for (int j = 0; j < ((int) (brightnessLevel * 10)); j++) {
         print += "*";

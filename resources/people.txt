@@ -1,3 +1,6 @@
 Person{name='Will', age=11}
 Person{name='Dustin', age=12}
 Person{name='Max', age=13}
+Person{name='Mario', age=31}
+Person{name='Piera', age=55}
+Person{name='Matilde', age=10}
