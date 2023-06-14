@@ -101,6 +101,25 @@ public class Event {
     }
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    // verifico se siamo lo stesso oggetto
+    if (this == obj) {
+      return true;
+    }
+    // verifico se abbiamo la stessa classe
+    if (obj == null || obj.getClass() != this.getClass()) {
+      return false;
+    }
+    // altrimenti faccio il cast
+    Event otherEvent = (Event) obj;
+
+    // confronto campo per campo
+    return this.getDate().isEqual(otherEvent.getDate()) && this.getTitle()
+        .equals(otherEvent.getTitle()) && this.getSeats() == otherEvent.getSeats()
+        && this.getBookedSeats() == otherEvent.getBookedSeats();
+
+  }
 
   /* OVERRIDE */
   @Override
